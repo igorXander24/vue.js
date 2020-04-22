@@ -200,6 +200,7 @@
         }
 
         app > header > config {
+            position: relative;
             align-items: center;
             color: white;
             height: 100%;
@@ -297,6 +298,10 @@
 <body>
     <app id="app">
         <board>
+            <!--
+              -- v-html
+              -- Mala práctica si se desea estructurar la webapp, el concepto componente es mas idóneo
+              -->
             <networks v-html="socials"></networks>
             <links v-html="linkeds"></links>
             <menu-linked class="icon grayscale back"></menu-linked>

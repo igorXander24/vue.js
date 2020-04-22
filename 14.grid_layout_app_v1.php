@@ -28,6 +28,14 @@
             width: 36px;
         }
 
+        .icon-22 {
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 22px 22px;
+            height: 22px;
+            width: 22px;
+        }
+
         .whatsapp {
             background-image: url("social/whatsapp.svg");
         }
@@ -113,10 +121,25 @@
             background-image: url("icons/user.svg");
         }
 
+        .user-g {
+            background-image: url("icons/user-g.svg");
+        }
+
         .back {
             background-image: url("icons/back.svg");
         }
 
+        .user-color {
+            background-image: url("icons/boss.svg");
+        }
+
+        .key {
+            background-image: url("icons/key.svg");
+        }
+
+        .turn-off {
+            background-image: url("icons/turn-off.svg");
+        }
 
         /**
          * EXTRA SMALL
@@ -139,10 +162,10 @@
             display: grid;
             grid-template-columns: 1fr;
             height: 100vh;
-            grid-template-rows: 30px 80px 40px 1fr;
+            grid-template-rows: 30px minmax(70px, 70px) 40px 1fr;
         }
 
-        app * {
+        app *:not(select):not(option) {
             display: flex;
         }
 
@@ -160,24 +183,24 @@
         }
 
         networks,
-        links,
-        app > board > links > linked {
+        menu-secondary,
+        app > board > menu-secondary > linked {
             height: 100%;
             align-items: center;
         }
 
-        app > board > links > linked {
+        app > board > menu-secondary > linked {
             padding: 0 8px;
         }
 
-        links > linked:hover,
+        menu-secondary > linked:hover,
         networks > *:hover,
         app > board > menu-linked:hover {
             background-color: #D4D4D4;
             cursor: pointer;
         }
 
-        app > board > links {
+        app > board > menu-secondary {
             display: none;
         }
 
@@ -186,7 +209,7 @@
         }
 
         header {
-            background-color: #4CB24F;
+            background-color: #68A039;
             font-size: calc(0.1vw + 0.7em);
             flex-direction: column;
             padding: 8px 30px;
@@ -200,27 +223,76 @@
         }
 
         app > header > config {
+            position: relative;
             align-items: center;
             color: white;
-            height: 100%;
+            height: 30px;
+            min-height: 30px;
         }
 
         app > header > config > * {
             margin: 0 3px;
         }
 
-        app > header > config > text,
+        app > header > config > info,
         app > header > config > profile {
             display: none;
         }
 
         app > header > config > settings {
-            border: 1px solid gray;
+            border: 1px solid #588c30;
             border-radius: 3px;
         }
 
         app > menu {
-            background-color: #2F8E7C;
+            background-color: #32413E;
+        }
+
+        app > header > config > config-secondary-menu {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            border-left: 1px solid rgba(0, 0, 0, 0.2);
+            border-right: 1px solid rgba(0, 0, 0, 0.2);
+            border-top: 0px;
+            position: absolute;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 3px;
+            color: #939393;
+            padding: 2px 0;
+            right: 0;
+            top: 37px
+
+        }
+
+        app > header > config > config-secondary-menu > triangle {
+            position: absolute;
+            top: -7px;
+            right: 9px;
+            display: inline-block;
+            border-right: 7px solid transparent;
+            border-bottom: 7px solid white;
+            border-left: 7px solid transparent;
+            content: '';
+
+        }
+
+        app > header > config > config-secondary-menu > item {
+            padding: 4px 8px;
+            align-items: center;
+        }
+
+        app > header > config > config-secondary-menu > item:last-child {
+            border-top: 1px solid rgba(0, 0, 0, 0.2);;
+        }
+
+        app > header > config > config-secondary-menu > item > * {
+            margin: 0 5px;
+        }
+
+        app > header > config > config-secondary-menu > item:hover {
+            background-color: coral;
+            color: white;
         }
         /**
          * SMALL
@@ -230,7 +302,7 @@
             /**
              * code not implement
              */
-            app > header > config > text,
+            app > header > config > info,
             app > header > config > profile {
                 display: flex;
             }
@@ -245,8 +317,6 @@
             /**
              * code not implement
              */
-
-
 
         }
 
@@ -271,7 +341,7 @@
              */
             app {
                 grid-template-columns: 210px 1fr;
-                grid-template-rows: 30px 45px 1fr;
+                grid-template-rows: 30px minmax(45px, 45px) 1fr;
             }
 
             board,
@@ -284,79 +354,123 @@
                 justify-content: space-between;
             }
 
-            app > board > links {
+            app > board > menu-secondary {
                 display: flex;
             }
 
             app > board > menu-linked {
                 display: none;
             }
+
+            /*
+            app > header > config > config-secondary-menu {
+                bottom: -46px;
+            }
+            */
         }
     </style>
 </head>
 <body>
     <app id="app">
         <board>
-            <networks></networks>
-            <links v-html="linkeds"></links>
+            <networks>
+                <socials
+                    v-for="social in socials"
+                    v-bind:item="social"
+                    v-bind:key="social.id">
+                </socials>
+            </networks>
+            <menu-secondary>
+                <linkeds
+                    v-for="linked in linkeds"
+                    v-bind:item="linked"
+                    v-bind:key="linked.id">
+                </linkeds>
+            </menu-secondary>
             <menu-linked class="icon grayscale back"></menu-linked>
         </board>
         <header>
             <logo>
-                <img src="logo/magma.svg" alt="">
+                <imagine></imagine>
             </logo>
-            <config>
-                <text>
-                    Perfil, 
-                </text>
-                <profile>
-                    <select name="" id="">
-                        <option selected value="xvn1009e">Administrador</option>
-                        <option value="xvn1009r">Desarrollador</option>
-                    </select>
-                </profile>
-                <user>
-                    IGOR A. QUISPE VÁSQUEZ
-                </user>
-                <settings class="icon user grayscale">
-
-                </settings>
-            </config>
+            <control-config
+                v-bind:user="user">
+            </control-config>
         </header>
         <menu>
-            1
+
         </menu>
         <container>
-            2
+
         </container>
     </app>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         const _BLANK = '';
 
-        let _social = (tag) => {
-            let _html = `
-                <${tag} class="icon grayscale ${tag}"></${tag}>
-            `;
-            return _html;
-        };
+        Vue.component('socials', {
+            props: ['item'],
+            template: `
+                <social :class="['icon', 'grayscale', item.tag]"></social>
+            `
+        });
 
-        let _linked = (icon, text) => {
-            let _html = `
+        Vue.component('linkeds', {
+            props: ['item'],
+            template: `
                 <linked>
-                    <icon class="icon grayscale ${icon}"></icon>
-                    <nome>${text}</nome>
+                    <icon :class="['icon', 'grayscale', item.icon]"></icon>
+                    <nome>{{ item.text }}</nome>
                 </linked>
-            `;
-            return _html;
-        };
+            `
+        });
 
-        //Vue.component
+        Vue.component('imagine', {
+            template: `
+                <img src="logo/magma.svg" alt="">
+            `
+        });
+
+        Vue.component('control-config', {
+            props: ['user'],
+            template: `
+                <config>
+                    <info>
+                        Perfil,
+                    </info>
+                    <profile>
+                        <select>
+                            <option v-for="profile in user.profiles" :value="profile.i">{{ profile.text }}</option>
+
+                        </select>
+                    </profile>
+                    <user>
+                        {{ user.fullname }}
+                    </user>
+                    <settings class="icon user-g"></settings>
+                    <config-secondary-menu>
+                        <triangle></triangle>
+                        <item>
+                            <icon class="icon-22 user-color"></icon>
+                            <option>Mis Datos</option>
+                        </item>
+                        <item>
+                            <icon class="icon-22 key"></icon>
+                            <option>Cambiar mi Contraseña</option>
+                        </item>
+                        <item>
+                            <icon class="icon-22 turn-off"></icon>
+                            <option>Cerrar Sessión</option>
+                        </item>
+                    </config-secondary-menu>
+                </config>
+            `
+        });
 
         let _app = new Vue({
             el          : '#app',
             data        : {
-                social      : [
+                socials      : [ //<- Considerar colocar un id mas adelante
                     { tag : 'whatsapp'},
                     { tag : 'hangout'},
                     { tag : 'messenger'},
@@ -364,7 +478,7 @@
                     { tag : 'instagram'},
                     { tag : 'twitter'}
                 ],
-                linked      : [
+                linkeds      : [
                     { icon : 'home', text: 'INICIO' },
                     { icon : 'ebsco', text: 'EBSCO' },
                     { icon : 'presentation', text: 'AULA VIRTUAL' },
@@ -375,9 +489,15 @@
                     { icon : 'www', text: 'WEB UCT' },
                     { icon : 'work', text: 'BOLSA DE TRABAJO' }
                 ],
-                socials     : _BLANK,
-                linkeds     : _BLANK
-            },
+                user: {
+                    fullname : 'Igor Alexander Quispe Vásquez',
+                    profiles: [
+                        { i: '1', text: 'Administrador'},
+                        { i: '2', text: 'Programador'}
+                    ]
+                }
+            }
+            /*,
             mounted()    {
                 this.socials = this.social.map((e) => {
                     return _social(e.tag);
@@ -387,6 +507,7 @@
                     return _linked(e.icon, e.text);
                 }).join(_BLANK);
             }
+            */
         });
     </script>
 </body>

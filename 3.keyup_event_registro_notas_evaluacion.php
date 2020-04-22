@@ -246,7 +246,7 @@
                         let _n1 = o.n1;
                         let _n2 = o.n2;
                         let _n3 = o.n3;
-                        let _p = (_n1 + _n2 + _n3) / 3;
+                        let _p = parseInt((_n1 + _n2 + _n3) / 3);
 
                         let _r = _BLANK;
                         let _c = _BLANK;
@@ -263,7 +263,7 @@
                                 _c = 'green';
                             }
                         }
-                        o.p =  parseInt(_p);
+                        o.p =  _p;
                         o.resultado = _r;
                         o.c = _c;
 
