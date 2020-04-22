@@ -75,51 +75,55 @@
         }
 
         indicator.uncollapse {
-            background-image: url("icons/up-arrow.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/up-arrow.svg");
+        }
+
+        indicator.collapse {
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/down-arrow.svg");
         }
 
         .peru {
-            background-image: url("icons/flags/svg/074-peru.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/074-peru.svg");
         }
 
         .denmark {
-            background-image: url("icons/flags/svg/072-denmark.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/072-denmark.svg");
         }
 
         .india {
-            background-image: url("icons/flags/svg/217-india.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/217-india.svg");
         }
 
         .thailand {
-            background-image: url("icons/flags/svg/184-thailand.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/184-thailand.svg");
         }
 
         .colombia {
-            background-image: url("icons/flags/svg/062-colombia.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/062-colombia.svg");
         }
 
         .mexico {
-            background-image: url("icons/flags/svg/239-mexico.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/239-mexico.svg");
         }
 
         .norway {
-            background-image: url("icons/flags/svg/058-norway.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/058-norway.svg");
         }
 
         .belarus {
-            background-image: url("icons/flags/svg/110-belarus.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/110-belarus.svg");
         }
 
         .england {
-            background-image: url("icons/flags/svg/152-england.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/152-england.svg");
         }
 
         .japan {
-            background-image: url("icons/flags/svg/033-japan.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/033-japan.svg");
         }
 
         .philippines {
-            background-image: url("icons/flags/svg/076-philippines.svg");
+            background-image: url("https://raw.githubusercontent.com/igorXander24/vue.js/master/icons/flags/svg/076-philippines.svg");
         }
 
         app > i-select > list {
@@ -164,7 +168,7 @@
                             <icon :class="['icon_24', selected.icon]"></icon>
                             <label>{{ selected.text }}</label>
                         </item>
-                        <indicator class="icon uncollapse"></indicator>
+                        <indicator :class="['icon', {'uncollapse': !display, 'collapse': display}]"></indicator>
                     </display>
                     <list v-if="display">
                         <item v-for="item in items" :value="item.value" @click="select(item)">
