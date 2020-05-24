@@ -39,11 +39,13 @@
         const _app = new Vue({
             el          : '#app',
             data        : {
-                titulo      : 'GYM con VUE',
+                titulo      : 'Lista de Alimentos',
                 tareas      : [],
                 nuevaTarea  : ''
             },
             methods     : {
+                //<- @click:agregarTarea
+                //<- @keyup.enter:agregarTarea
                 agregarTarea() {
                     this.tareas.push({
                         nombre  : this.nuevaTarea,
@@ -53,19 +55,22 @@
                     //LOCALSTORAGE
                     localStorage.setItem('l_tareas', JSON.stringify(this.tareas));
                 },
+                //<- @click:editarTarea
                 editarTarea(i) {
                     this.tareas[i].estado = true;
                     //LOCALSTORAGE
                     localStorage.setItem('l_tareas', JSON.stringify(this.tareas));
                 },
+                //<- @click:eliminarTarea
                 eliminar(i) {
                     this.tareas.splice(i, 1);
                     //LOCALSTORAGE
                     localStorage.setItem('l_tareas', JSON.stringify(this.tareas));
                 }
             },
+            //<- Ideal, para inicializar variables de manera asíncrona
             created: function() {
-                let _l_tareas = JSON.parse(localStorage.getItem('l_tareas'));
+                let _l_tareas = JSON.parse(localStorage.getItem('l_tareas')); //**!IMPORTANT**
                 if(_l_tareas === null) {
                     this.tareas = [];
                 } else {

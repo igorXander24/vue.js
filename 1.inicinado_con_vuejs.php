@@ -96,7 +96,6 @@
                     </cO>
                 </e-code>
             </personal-data>
-
         </v-card>
     </list-employyes>
 
@@ -118,7 +117,7 @@
             data        : {
                 employees   : [
                     {
-                        fullname    : 'Margarita Dominguez',
+                        fullname    : 'Margarita Tone',
                         path        : 'emma.jpg',
                         jobtitle    : 'Ingeniero de Software',
                         ecode       : 123499981256,
@@ -132,7 +131,7 @@
                         status      : false
                     },
                     {
-                        fullname    : 'Leonel Lazarte',
+                        fullname    : 'Ezequiel Hanampa',
                         path        : 'anton.jpg',
                         jobtitle    : 'Arquitecto',
                         ecode       : 466779991,

@@ -23,6 +23,10 @@
         <div class="progress">
             <div class="progress-bar" role="progressbar" :style="{width: contador + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" :class="color"> {{ contador }} % </div>
         </div>
+
+        <time>
+            {{ time }}
+        </time>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -36,8 +40,13 @@
              * */
             data    : {
                 mensaje     : 'hola soy Igor',
-                contador    : 0
+                contador    : 0,
+                date        : null
             },
+            /**
+             * Las propiedades computadas siempre deben tener un return.
+             * Se utilizan para realizar cálculos simples, si se requiere algo mas complejo, buscar otra vía.
+             * */
             computed    : {
                 invertido() {
                     return this.mensaje.split('').reverse().join(_BLANK);
@@ -48,6 +57,13 @@
                         'bg-warning'    : this.contador > 10 && this.contador < 20,
                         'bg-danger'     : this.contador >= 20
                     }
+                },
+                time() {
+                    setInterval(() => {
+                        this.date = new Date();
+
+                    }, 1000);
+                    return this.date;
                 }
             }
         });

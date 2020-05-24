@@ -1,0 +1,80 @@
+BEFORE CREATE 19.ciclo_de_vida_de_un_componente.php:25:25
+{…}
+​
+"$attrs":
+​
+"$children": Array []
+​
+"$createElement": function $createElement()
+​
+"$el": <div id="app">
+​
+"$listeners":
+​
+"$options": Object { components: {}, directives: {}, el: "#app", … }
+​
+"$parent": undefined
+​
+"$refs": Object {  }
+​
+"$root": Object { _uid: 0, _isVue: true, "$options": {…}, … }
+​
+"$scopedSlots": Object {  }
+​
+"$slots": Object {  }
+​
+"$vnode": undefined
+​
+_c: function _c()
+​
+_data: Object { mensaje: Getter & Setter, … }
+​
+_directInactive: false
+​
+_events: Object {  }
+​
+_hasHookEvent: false
+​
+_inactive: null
+​
+_isBeingDestroyed: false
+​
+_isDestroyed: false
+​
+_isMounted: true
+​
+_isVue: true
+​
+_renderProxy: Proxy { <target>: {…}, <handler>: {…} }
+​
+_self: Object { _uid: 0, _isVue: true, "$options": {…}, … }
+​
+_staticTrees: null
+​
+_uid: 0
+​
+_vnode: Object { tag: "div", data: {…}, children: (1) […], … }
+​
+_watcher: Object { sync: false, lazy: false, user: false, … }
+​
+_watchers: Array [ {…} ]
+​
+mensaje:
+​
+<get $attrs()>: function reactiveGetter()
+​
+<set $attrs()>: function reactiveSetter()
+​
+<get $listeners()>: function reactiveGetter()
+​
+<set $listeners()>: function reactiveSetter()
+​
+<get mensaje()>: function proxyGetter()
+​
+<set mensaje()>: function proxySetter()
+​
+<prototype>: Object { _init: _init(), "$set": set(), "$delete": del(), … }
+19.ciclo_de_vida_de_un_componente.php:26:25
+You are running Vue in development mode.
+Make sure to turn on production mode when deploying for production.
+See more tips at https://vuejs.org/guide/deployment.html vue.js:8553:45
